@@ -4,6 +4,9 @@ along with dwh_create_date with datetim datatype which has getdate which is by d
 */
 use warehouse;
 
+
+use warehouse;
+
 if OBJECT_ID('silver.crm_cust_info','u') is not null
 drop table silver.crm_cust_info;
 create table silver.crm_cust_info(
@@ -22,12 +25,13 @@ dwh_create_date datetime default getdate()
   drop table silver.crm_prd_info;
   create table silver.crm_prd_info(
   prd_id int,
+  cat_id nvarchar(50),
   prd_key nvarchar(50),
   prd_nm nvarchar(50),
   prd_cost int ,
   prd_line nvarchar(50),
-  prd_start_dt datetime,
-  prd_end_dt datetime ,
+  prd_start_dt date,
+  prd_end_dt date ,
   dwh_create_date datetime default getdate()
 
   );
@@ -39,9 +43,9 @@ dwh_create_date datetime default getdate()
   sls_ord_num nvarchar(50),
   sls_prd_key nvarchar(50),
   sls_cust_id int,
-  sls_order_dt int,
-  sls_ship_dt int,
-  sls_due_dt int,
+  sls_order_dt date,
+  sls_ship_dt date,
+  sls_due_dt date,
   sls_sales int,
   sls_quantity int,
   sls_price int ,
@@ -80,4 +84,8 @@ dwh_create_date datetime default getdate()
   maintenance nvarchar(50) ,
   dwh_create_date datetime default getdate()
 );
+
+
+
+
 
